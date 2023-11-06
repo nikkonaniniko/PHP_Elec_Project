@@ -5,3 +5,8 @@
 [x-cloak] {
     display: none;
 }
+
+.bg-image {
+    background-image: url('/images/bg.jpg');
+    background-size: cover; /* You can adjust this property as needed */
+}
