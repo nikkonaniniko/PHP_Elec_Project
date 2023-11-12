@@ -37,6 +37,7 @@ Route::middleware([
     })->name('contact-us');
 });
 
+//HOME CONTROLLER--------------------------
 Route::get('/redirect',[HomeController::class, 'redirect']);
 
 Route::get('/game_details/{id}',[HomeController::class, 'game_details']);
@@ -45,8 +46,13 @@ Route::get('/show_cart',[HomeController::class, 'show_cart']);
 Route::get('/remove_cart/{id}',[HomeController::class, 'remove_cart']);
 
 Route::get('/cash_order',[HomeController::class, 'cash_order']);
+Route::get('/show_orders',[HomeController::class, 'show_orders']);
+Route::get('/cancel_order/{id}',[HomeController::class, 'cancel_order']);
+
+Route::get('/search_game',[HomeController::class, 'search_game']);
 
 
+//ADMIN CONTROLLER--------------------------
 Route::get('/view_category',[AdminController::class, 'view_category']);
 Route::post('/add_category',[AdminController::class, 'add_category']);
 Route::get('/delete_category/{id}',[AdminController::class, 'delete_category']);

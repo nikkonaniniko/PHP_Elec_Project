@@ -28,6 +28,12 @@
             padding: 5px;
             font-weight: bold;
         }
+        .can_design {
+            background: red;
+            color: white;
+            padding: 5px;
+            font-weight: bold;
+        }
         .search {
             padding-bottom: 20px;
         }
@@ -67,7 +73,7 @@
                     <th>Payment Status</th>
                     <th>Delivery Status</th>
                     <th>Image</th>
-                    <th>Delivered</th>
+                    <th>Action</th>
                 </tr>
                 @forelse ($order as $order)
                 <tr>
@@ -84,8 +90,10 @@
                     <td>
                     @if($order->delivery_status=='processing')
                         <a onclick="return confirm('Are you sure?')" href="{{url('delivered', $order->id)}}" class="btn btn-success">Delivered</a>
-                    @else 
+                    @elseif($order->delivery_status=='delivered') 
                         <p class="del_design">Delivered</p>
+                    @else
+                        <p class="can_design">Canceled</p>
                     @endif
                     </td>
                 </tr>

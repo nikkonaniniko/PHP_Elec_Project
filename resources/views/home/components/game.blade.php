@@ -4,19 +4,26 @@
         <div class="heading_container heading_center">
             <h2>
                 Our <span>Games</span>
+                <div>
+                    <form action="{{url('search_game')}}" method="GET">
+                        @csrf
+                        <input style="width:300px;" type="text" name="search" placeholder="Search Game...">
+                        <input type="submit" value="search">
+                    </form>
+                </div>
             </h2>
         </div>
         <div class="row">
 
-            @foreach ($game as $game)
+            @foreach ($game as $games)
                 <div class="col-sm-6 col-md-4 col-lg-4">
                     <div class="box">
                         <div class="option_container">
                             <div class="options">
-                                <a href="{{ url('game_details', $game->id) }}" class="option1">
+                                <a href="{{ url('game_details', $games->id) }}" class="option1">
                                     View Details
                                 </a>
-                                <form action="{{ url('add_cart', $game->id) }}" method="POST">
+                                <form action="{{ url('add_cart', $games->id) }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-4">
@@ -31,14 +38,14 @@
                             </div>
                         </div>
                         <div class="img-box">
-                            <img src="game/{{ $game->image }}" alt="">
+                            <img src="game/{{ $games->image }}" alt="">
                         </div>
                         <div class="detail-box">
                             <h5>
-                                {{ $game->name }}
+                                {{ $games->name }}
                             </h5>
                             <h6>
-                                ${{ $game->price }}
+                                ${{ $games->price }}
                             </h6>
                         </div>
                     </div>

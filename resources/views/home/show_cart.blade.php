@@ -87,7 +87,7 @@
                 </tr>
 
                 <?php $totalprice = 0; ?>
-                @foreach ($cart as $cart)
+                @forelse ($cart as $cart)
                     <tr>
                         <td>{{ $cart->game_name }}</td>
                         <td>{{ $cart->quantity }}</td>
@@ -97,7 +97,11 @@
                                 href="{{ url('remove_cart', $cart->id) }}">Remove</a></td>
                     </tr>
                     <?php $totalprice = $totalprice + $cart->price; ?>
-                @endforeach
+
+                    @empty
+                    <td colspan="5">No Items on the Cart</td>
+
+                @endforelse
             </table>
 
             <div>

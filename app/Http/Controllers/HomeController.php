@@ -35,8 +35,9 @@ class HomeController extends Controller
 
             $total_delivered=Order::where('delivery_status', '=', 'delivered')->get()->count();
             $total_processing=Order::where('delivery_status', '=', 'processing')->get()->count();
+            $total_canceled=Order::where('delivery_status', '=', 'Canceled')->get()->count();
 
-            return view('admin.home', compact('total_games', 'total_orders', 'total_users', 'total_revenue', 'total_delivered', 'total_processing'));
+            return view('admin.home', compact('total_games', 'total_orders', 'total_users', 'total_revenue', 'total_delivered', 'total_processing', 'total_canceled'));
         } else {
             // $game = Game::paginate(3); for pagination kodigo
             $game = Game::all();
@@ -124,5 +125,36 @@ class HomeController extends Controller
         }    
 
         return redirect()->back()->with('message', 'We received your order. we will connect with you soon.');
+    }
+
+    public function show_orders() {
+        if(Auth::id()) {
+            $user = Auth::user();
+            $userid = $user->id;
+
+            $order=Order::where('user_id', '=', $userid)->get();
+
+            return view('home.orders', compact('order'));
+        } else {
+            return redirect('login');
+        }
+
+    }
+
+    public function cancel_order($id) {
+        $order=Order::find($id);
+        $order->delivery_status='Canceled';
+        
+        $order->save();
+        
+        return redirect()->back();
+    }
+
+    public function search_game(Request $request) {
+        $search_game=$request->search;
+        // $game=Game::where('name', 'LIKE', '%$search_game%')->get();
+        $game=Game::where('name', 'LIKE', "%$search_game%")->orWhere('category', 'LIKE', "%$search_game%")->get();
+
+        return view('home.userpage', compact('game'));
     }
 }
