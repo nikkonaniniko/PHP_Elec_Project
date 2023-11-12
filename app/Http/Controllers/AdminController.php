@@ -18,11 +18,20 @@ class AdminController extends Controller
 
     public function add_category(Request $request)
     {
-        $data = new category;
+        $validated = $request->validate([
+            'category_name' => 'required|unique:categories|max:255',
+        ]);
 
-        $data->category_name = $request->category_name;
+        Category::create([
+            'category_name' => $request->category_name,
+            // 'user_id' => Auth::user()->id,
+            // 'created_at' => Carbon::now()
+        ]);
+        // $data = new category;
 
-        $data->save();
+        // $data->category_name = $request->category_name;
+
+        // $data->save();
 
         return redirect()->back()->with('message', 'Category Added Successfully');
     }
