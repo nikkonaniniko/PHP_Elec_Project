@@ -50,6 +50,8 @@ Route::get('/show_orders',[HomeController::class, 'show_orders']);
 Route::get('/cancel_order/{id}',[HomeController::class, 'cancel_order']);
 
 Route::get('/search_game',[HomeController::class, 'search_game']);
+Route::get('/search_games',[HomeController::class, 'search_games']); //for all_games
+Route::get('/games',[HomeController::class, 'games']);
 
 
 //ADMIN CONTROLLER--------------------------

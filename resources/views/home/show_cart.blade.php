@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Basic -->
     <base href="/public">
     <meta charset="utf-8" />
@@ -66,6 +67,7 @@
 </head>
 
 <body>
+    @include('sweetalert::alert')
     <div class="hero_area">
         @include('home.components.header')
 
@@ -93,8 +95,8 @@
                         <td>{{ $cart->quantity }}</td>
                         <td>${{ $cart->price }}</td>
                         <td><img class="img_design" src="/game/{{ $cart->image }}" alt="Game Image"></td>
-                        <td><a onclick="return confirm('Are you sure?')" class="btn btn-danger"
-                                href="{{ url('remove_cart', $cart->id) }}">Remove</a></td>
+                        {{-- <td><a onclick="return confirm('Are you sure?')" class="btn btn-danger" href="{{ url('remove_cart', $cart->id) }}">Remove</a></td> --}}
+                        <td><a class="btn btn-danger" onclick="confirmation(event)" href="{{ url('remove_cart', $cart->id) }}">Remove</a></td>
                     </tr>
                     <?php $totalprice = $totalprice + $cart->price; ?>
 
@@ -111,7 +113,6 @@
             <div>
                 <h1 style="font-size: 30px; padding-bottom: 10px;">Proceed to Order</h1>
                 <a class="btn btn-info" href="{{ url('cash_order') }}">Cash on Delivery</a>
-                <a class="btn btn-info" href="">Pay using Card</a>
             </div>
 
         </div>
@@ -136,6 +137,26 @@
         <script src="js/bootstrap.js" defer></script>
         <!-- custom js -->
         <script src="js/custom.js" defer></script>
+
+        <script>
+            function confirmation(ev) {
+              ev.preventDefault();
+              var urlToRedirect = ev.currentTarget.getAttribute('href');  
+              console.log(urlToRedirect); 
+              swal({
+                  title: "Remove Product Confirmation",
+                  text: "Are you sure?",
+                  icon: "warning",
+                  buttons: true,
+                  dangerMode: true,
+              })
+              .then((willCancel) => {
+                  if (willCancel) {   
+                      window.location.href = urlToRedirect;
+                  }  
+              }); 
+          }
+      </script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>

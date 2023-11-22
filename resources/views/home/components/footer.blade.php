@@ -1,72 +1,49 @@
-<!-- footer start -->
-<footer>
-    <div class="container">
-       <div class="row">
-          <div class="col-md-4">
-              <div class="full">
-                 <div class="logo_footer">
-                   <a href="#"><img width="210" src="images/logo.png" alt="#" /></a>
-                 </div>
-                 <div class="information_f">
-                   <p><strong>ADDRESS:</strong> 28 White tower, Street Name New York City, USA</p>
-                   <p><strong>TELEPHONE:</strong> +91 987 654 3210</p>
-                   <p><strong>EMAIL:</strong> yourmain@gmail.com</p>
-                 </div>
-              </div>
-          </div>
-          <div class="col-md-8">
-             <div class="row">
-             <div class="col-md-7">
-                <div class="row">
-                   <div class="col-md-6">
-                <div class="widget_menu">
-                   <h3>Menu</h3>
-                   <ul>
-                      <li><a href="#">Home</a></li>
-                      <li><a href="#">About</a></li>
-                      <li><a href="#">Services</a></li>
-                      <li><a href="#">Testimonial</a></li>
-                      <li><a href="#">Blog</a></li>
-                      <li><a href="#">Contact</a></li>
-                   </ul>
+<header>
+<style>
+footer{
+background-color: #242424;
+color: white;
+padding: 1rem;
+padding-top: 10px;
+padding-bottom: 20px;
+z-index: 1;
+bottom:0;
+position: relative;
+width:100%;
+}
+</style>
+<script src="https://kit.fontawesome.com/f774b2efba.js" crossorigin="anonymous"></script>
+</header>
+<footer style="min-height: 3vh">
+            <div class="container-fluid padding">
+                <div class="row text-center padding">
+                    <div class="col-md-4">
+                        <img src="images/logo.png" width="200px" alt="logo">
+                    </div>
+                    <div class="col-md-4">
+                        <hr class="light">
+                        <h5><strong>About Us</strong></h5>
+                        <hr class="light">
+                        <p>9999-9999<p>
+                        <p>Null<p>
+                        <p>Null<p>
+                        <p><a href="about us.php">Go to About Us page</a></p>
+                    </div>
+                    <div class="col-md-4">
+                        <hr class="light">
+                        <h5><strong>Developers</strong></h5>
+                        <hr class="light">
+                        <p>Kyle Consebido</p>
+                        <p>Williamson Ding</p>
+                        <p>Charles Angelo Jose</p>
+                        <p>Marc Emmanuel Ramos</p>
+                        <p>Charles Dave Reyes</p>
+                    </div>
+                    <div class="col-12">
+                        <hr class="light">
+                        <h6>Web Programming [2023]</h6>
+                        <h6>© 2023 Lootbox. All Rights Reserved.</h6>
+                    </div>
                 </div>
-             </div>
-             <div class="col-md-6">
-                <div class="widget_menu">
-                   <h3>Account</h3>
-                   <ul>
-                      <li><a href="#">Account</a></li>
-                      <li><a href="#">Checkout</a></li>
-                      <li><a href="#">Login</a></li>
-                      <li><a href="#">Register</a></li>
-                      <li><a href="#">Shopping</a></li>
-                      <li><a href="#">Widget</a></li>
-                   </ul>
-                </div>
-             </div>
-                </div>
-             </div>     
-             <div class="col-md-5">
-                <div class="widget_menu">
-                   <h3>Newsletter</h3>
-                   <div class="information_f">
-                     <p>Subscribe by our newsletter and get update protidin.</p>
-                   </div>
-                   <div class="form_sub">
-                      <form>
-                         <fieldset>
-                            <div class="field">
-                               <input type="email" placeholder="Enter Your Mail" name="email" />
-                               <input type="submit" value="Subscribe" />
-                            </div>
-                         </fieldset>
-                      </form>
-                   </div>
-                </div>
-             </div>
-             </div>
-          </div>
-       </div>
-    </div>
- </footer>
- <!-- footer end -->
+            </div>
+        </footer>

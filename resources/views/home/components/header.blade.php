@@ -8,13 +8,14 @@
 <!-- header section starts -->
 <header class="header_section">
     <div class="container">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-            <a class="navbar-brand" href="{{ url('/') }}"><img width="250" src="images/logo.png"
-                    alt="#" /></a>
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+            <a class="navbar-brand" href="{{ url('/') }}"><img width="100px" src="images/logo.png"
+                    alt="logo" /></a>
+
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="product.html">Games</a>
+                        <a class="nav-link" href="{{ url('games') }}">Games</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="blog_list.html">About Us</a>
@@ -22,23 +23,19 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">Contact Us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{url('show_cart')}}"><i class="bi bi-cart4"></i></a>
-                    </li>
-                    {{-- <form class="form-inline">
-                        <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                            <i class="fa fa-search" aria-hidden="true"></i>
-                        </button>
-                    </form> --}}
+
 
                     @if (Route::has('login'))
                         @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('show_cart') }}"><i class="bi bi-cart4"></i></a>
+                            </li>
                             <li class="nav-item">
                                 <button class="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="nav-label">{{ Auth::user()->name }} <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a href="{{url('show_orders')}}">Orders</a></li>
+                                    <li><a href="{{ url('show_orders') }}">Orders</a></li>
                                     <li><a href={{ route('profile.show') }}>Profile</a></li>
                                     <li>
                                         <form method="POST" action="{{ route('logout') }}">

@@ -11,7 +11,7 @@
       <meta name="description" content="" />
       <meta name="author" content="" />
       <link rel="shortcut icon" href="images/favicon.png" type="">
-      <title>Famms - Fashion HTML Template</title>
+      <title>Lootbox - Game Store</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="home/css/bootstrap.css" />
       <!-- font awesome style -->
@@ -22,29 +22,17 @@
       <link href="home/css/responsive.css" rel="stylesheet" />
    </head>
    <body>
-      <div class="hero_area">
+      @include('sweetalert::alert')
+
+      {{-- <div class="hero_area"> --}}
          @include('home.components.header')
          @include('home.components.slider')
+         <video src="images/cod.mp4" width="100%" autoplay muted loop></video>
       </div>
-      
-      @include('home.components.why')
-      @include('home.components.arrival')
       
       @include('home.components.game')
-
-      @include('home.components.subscribe')
-      @include('home.components.client')
       
       @include('home.components.footer')
-
-      
-      <div class="cpy_">
-         <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
-         
-            Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-         
-         </p>
-      </div>
 
       <script>
          document.addEventListener("DOMContentLoaded", function(event) { 

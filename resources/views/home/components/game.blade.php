@@ -1,11 +1,12 @@
 <!-- product section -->
+<div class="parallax2">
 <section class="product_section layout_padding">
     <div class="container">
         <div class="heading_container heading_center">
             <h2>
                 Our <span>Games</span>
                 <div>
-                    <form action="{{url('search_game')}}" method="GET">
+                    <form action="{{ url('search_game') }}" method="GET">
                         @csrf
                         <input style="width:300px;" type="text" name="search" placeholder="Search Game...">
                         <input type="submit" value="search">
@@ -13,6 +14,7 @@
                 </div>
             </h2>
         </div>
+
         <div class="row">
 
             @foreach ($game as $games)
@@ -45,7 +47,7 @@
                                 {{ $games->name }}
                             </h5>
                             <h6>
-                                ${{ $games->price }}
+                                ₱{{ $games->price }}
                             </h6>
                         </div>
                     </div>
@@ -64,4 +66,5 @@
 
         </div>
 </section>
+</div>
 <!-- end product section -->

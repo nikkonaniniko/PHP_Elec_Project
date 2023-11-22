@@ -7,13 +7,18 @@ use App\Models\Game;
 use App\Models\Order;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
     public function view_category()
     {
-        $data = Category::all();
-        return view('admin.category', compact('data'));
+        if (Auth::id()) {
+            $data = Category::all();
+            return view('admin.category', compact('data'));
+        } else {
+            return redirect('login');
+        }
     }
 
     public function add_category(Request $request)
@@ -84,29 +89,33 @@ class AdminController extends Controller
 
     public function edit_game_confirm(Request $request, $id)
     {
-        $game = Game::find($id);
+        if (Auth::id()) {
+            $game = Game::find($id);
 
-        $game->name = $request->name;
-        $game->description = $request->description;
-        $game->price = $request->price;
-        $game->quantity = $request->quantity;
-        $game->category = $request->category;
+            $game->name = $request->name;
+            $game->description = $request->description;
+            $game->price = $request->price;
+            $game->quantity = $request->quantity;
+            $game->category = $request->category;
 
-        // $oldImagePath = public_path('game/' . $game->image);
-        // if (file_exists($oldImagePath)) {
+            // $oldImagePath = public_path('game/' . $game->image);
+            // if (file_exists($oldImagePath)) {
 
-        //     unlink($oldImagePath);
-        // }
-        $image = $request->image;
-        if ($image) {
-            $imagename = time() . '.' . $image->getClientOriginalExtension();
-            $request->image->move('game', $imagename);
-            $game->image = $imagename;
+            //     unlink($oldImagePath);
+            // }
+            $image = $request->image;
+            if ($image) {
+                $imagename = time() . '.' . $image->getClientOriginalExtension();
+                $request->image->move('game', $imagename);
+                $game->image = $imagename;
+            }
+
+            $game->save();
+
+            return redirect()->back()->with('message', 'Game Edited Successfully');
+        } else {
+            return redirect('login');
         }
-
-        $game->save();
-
-        return redirect()->back()->with('message', 'Game Edited Successfully');
     }
 
     public function delete_game($id)
@@ -116,23 +125,26 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Game Deleted Successfully');
     }
 
-    public function order() {
-        $order=Order::all();
+    public function order()
+    {
+        $order = Order::all();
         return view('admin.order', compact('order'));
     }
 
-    public function delivered($id) {
-        $order=Order::find($id);
-        $order->delivery_status="delivered";
-        $order->payment_status="paid";
+    public function delivered($id)
+    {
+        $order = Order::find($id);
+        $order->delivery_status = "delivered";
+        $order->payment_status = "paid";
 
         $order->save();
         return redirect()->back();
     }
 
-    public function searchdata(Request $request) {
-        $searchText=$request->search;
-        $order=Order::where('name', 'LIKE', "%$searchText%")->orWhere('game_name', 'LIKE', "%$searchText%")->get();
+    public function searchdata(Request $request)
+    {
+        $searchText = $request->search;
+        $order = Order::where('name', 'LIKE', "%$searchText%")->orWhere('game_name', 'LIKE', "%$searchText%")->get();
 
         return view('admin.order', compact('order'));
     }
