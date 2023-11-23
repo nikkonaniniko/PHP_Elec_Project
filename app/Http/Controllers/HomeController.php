@@ -199,4 +199,8 @@ class HomeController extends Controller
 
         return view('home.about_us', compact('developers'));
     }
+
+    public function contact_us() {
+        return view('home.contact_us');
+    }
 }

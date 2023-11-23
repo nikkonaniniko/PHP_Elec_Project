@@ -41,6 +41,7 @@ Route::middleware([
 //HOME CONTROLLER--------------------------
 Route::get('/redirect',[HomeController::class, 'redirect']);
 Route::get('/about_us',[HomeController::class, 'about_us']);
+Route::get('/contact_us',[HomeController::class, 'contact_us']);
 
 Route::get('/game_details/{id}',[HomeController::class, 'game_details']);
 Route::post('/add_cart/{id}',[HomeController::class, 'add_cart']);
