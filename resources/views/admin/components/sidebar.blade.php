@@ -1,7 +1,7 @@
 <!-- partial:partials/_sidebar.html -->
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
     <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-      <a href={{url('/')}}><img src="images/logo.png" width="60px"  alt="logo" /></a>
+      <a href=#><img src="images/logo.png" width="60px"  alt="logo" /></a>
     </div>
     <ul class="nav">
       <li class="nav-item profile">
