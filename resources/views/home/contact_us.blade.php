@@ -47,16 +47,24 @@
         <img src="images/bg.jpg">
     </div>
 
+
 <div class="about-section">
     <div class="heading_container heading_center">
         <h2>
             Contact <span>Us</span>
         </h2>
+        
   <p>Some text about who we are and what we do.</p>
 </div>
+
 </div>
 
+{{-- @include('home.components.card') --}}
+
 <div class="hero_area">
+    
+</div>
+
 
 @include('home.components.footer')
 
