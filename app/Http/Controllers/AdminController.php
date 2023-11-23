@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Game;
 use App\Models\Order;
+use App\Models\Developers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -147,5 +148,47 @@ class AdminController extends Controller
         $order = Order::where('name', 'LIKE', "%$searchText%")->orWhere('game_name', 'LIKE', "%$searchText%")->get();
 
         return view('admin.order', compact('order'));
+    }
+
+    public function index() {
+        $developers = Developers::all();
+
+        return view('home.about_us', compact('developers'));
+    }
+
+    public function view_developer()
+    {
+        if (Auth::id()) {
+            $data = Developers::all();
+            return view('admin.developer', compact('data'));
+        } else {
+            return redirect('login');
+        }
+    }
+
+    public function add_developer(Request $request)
+    {
+        $data = new Developers();
+
+        $data->name = $request->name;
+        $data->description = $request->description;
+        $data->designation = $request->designation;
+        $image = $request->image;
+            if ($image) {
+                $imagename = time() . '.' . $image->getClientOriginalExtension();
+                $request->image->move('developer', $imagename);
+                $data->image = $imagename;
+            }
+
+        $data->save();
+
+        return redirect()->back()->with('message', 'Developer Added Successfully');
+    }
+
+    public function delete_developer($id)
+    {
+        $data = Developers::find($id);
+        $data->delete();
+        return redirect()->back()->with('message', 'Developer Deleted Successfully');
     }
 }

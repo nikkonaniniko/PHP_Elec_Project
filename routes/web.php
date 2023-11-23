@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DeveloperController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,7 @@ Route::middleware([
 
 //HOME CONTROLLER--------------------------
 Route::get('/redirect',[HomeController::class, 'redirect']);
+Route::get('/about_us',[HomeController::class, 'about_us']);
 
 Route::get('/game_details/{id}',[HomeController::class, 'game_details']);
 Route::post('/add_cart/{id}',[HomeController::class, 'add_cart']);
@@ -59,6 +61,10 @@ Route::get('/view_category',[AdminController::class, 'view_category']);
 Route::post('/add_category',[AdminController::class, 'add_category']);
 Route::get('/delete_category/{id}',[AdminController::class, 'delete_category']);
 
+Route::get('/view_developer',[AdminController::class, 'view_developer']);
+Route::post('/add_developer',[AdminController::class, 'add_developer']);
+Route::get('/delete_developer/{id}',[AdminController::class, 'delete_developer']);
+
 // Route::get('/admin_dashboard', function () { return view('admin.home');});
 Route::get('/view_game',[AdminController::class, 'view_game']);
 Route::post('/add_game',[AdminController::class, 'add_game']);
@@ -70,4 +76,8 @@ Route::post('/edit_game_confirm/{id}',[AdminController::class, 'edit_game_confir
 Route::get('/order',[AdminController::class, 'order']);
 Route::get('/delivered/{id}',[AdminController::class, 'delivered']);
 Route::get('/search',[AdminController::class, 'searchdata']);
+
+
+
+
 

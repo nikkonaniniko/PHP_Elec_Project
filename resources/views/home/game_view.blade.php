@@ -3,7 +3,7 @@
     <div class="container">
         <div class="heading_container heading_center">
             <h2>
-                {{-- Our <span>Games</span> --}}
+                Our <span>Games</span>
                 <div>
                     <form action="{{url('search_games')}}" method="GET">
                         @csrf

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Game;
 use App\Models\Cart;
+use App\Models\Developers;
 use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -191,5 +192,11 @@ class HomeController extends Controller
         $game = Game::where('name', 'LIKE', "%$search_games%")->orWhere('category', 'LIKE', "%$search_games%")->get();
 
         return view('home.all_games', compact('game'));
+    }
+
+    public function about_us() {
+        $developers = Developers::all();
+
+        return view('home.about_us', compact('developers'));
     }
 }

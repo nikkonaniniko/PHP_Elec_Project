@@ -5,10 +5,10 @@ background-color: #242424;
 color: white;
 padding: 1rem;
 padding-top: 10px;
-padding-bottom: 20px;
+padding-bottom: 5px;
 z-index: 1;
 bottom:0;
-position: relative;
+margin-top: auto;
 width:100%;
 }
 </style>
@@ -25,9 +25,8 @@ width:100%;
                         <h5><strong>About Us</strong></h5>
                         <hr class="light">
                         <p>9999-9999<p>
-                        <p>Null<p>
-                        <p>Null<p>
-                        <p><a href="about us.php">Go to About Us page</a></p>
+                        <p>Email<p>
+                        <p><a href="{{ url('about_us')}}">Go to About Us page</a></p>
                     </div>
                     <div class="col-md-4">
                         <hr class="light">
