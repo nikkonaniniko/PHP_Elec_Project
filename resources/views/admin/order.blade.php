@@ -63,6 +63,7 @@
 
             <table class="table_design">
                 <tr>
+                    <th>Order Date</th>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Address</th>
@@ -77,6 +78,7 @@
                 </tr>
                 @forelse ($order as $order)
                 <tr>
+                    <td>{{$order->created_at}}</td>
                     <td>{{$order->name}}</td>
                     <td>{{$order->email}}</td>
                     <td>{{$order->address}}</td>

@@ -31,21 +31,22 @@
         }
 
         table {
-            border: 3px solid black;
+            border: 3px solid white;
+            color: white;
         }
 
         table th {
-            border: 3px solid black;
+            border: 3px solid white;
         }
 
         table td {
-            border: 3px solid black;
+            border: 3px solid white;
         }
 
         .th_design {
             font-size: 20px;
             padding: 5px;
-            background-color: red;
+            background-color: rgb(51, 176, 226);
             color: white;
         }
 
@@ -57,6 +58,23 @@
 
         .total_design {
             padding: 40px;
+            color: white;
+        }
+        .cart-section {
+        padding: 50px;
+        text-align: center;
+        background-color: #525252;
+        color: white;
+        }
+       
+        @media screen and (max-width: 650px) {
+        .column {
+            width: 100%;
+            display: block;
+        }
+        }
+        .order-section {
+            color: white;
         }
     </style>
 </head>
@@ -65,6 +83,9 @@
     @include('sweetalert::alert')
     <div class="hero_area">
         @include('home.components.header')
+        <div class="bg">
+            <img src="images/bg.jpg">
+        </div>
 
         @if (session()->has('message'))
             <div class="alert alert-success">
@@ -72,6 +93,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         @endif
+
+        <div class="cart-section">
+            <div class="heading_container heading_center">
+                <h2>
+                    My <span>Cart</span>
+                </h2>
+        </div> 
+        </div>
 
         <div class="center">
             <table>
@@ -105,9 +134,9 @@
                 <h1 class="total_design">Total Price: ${{ $totalprice }}</h1>
             </div>
 
-            <div>
+            <div class="order-section">
                 <h1 style="font-size: 30px; padding-bottom: 10px;">Proceed to Order</h1>
-                <a class="btn btn-info" href="{{ url('cash_order') }}">Cash on Delivery</a>
+                <a onclick="return confirm('Are you sure with this order?')" class="btn btn-info" href="{{ url('cash_order') }}">Cash on Delivery</a>
             </div>
 
         </div>

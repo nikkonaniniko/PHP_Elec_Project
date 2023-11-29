@@ -1,16 +1,16 @@
 .card {
-    position: absolute;
-    top: 550px;
-    left: 550px;
-    width: 830px;
-    height: 554px;
+    margin: auto;
+    margin-top: 40px;
+    width: 820px;
+    height: 584px;
     background-image: linear-gradient(163deg, #a2b1a9 0%, rgb(51, 176, 226) 100%);
     border-radius: 50px;
     transition: all .3s;
    }
    
    .card2 {
-    margin: 15px 15px 15px 20px;
+    margin-top: 40px;
+    margin: auto;
     width: 790px;
     height: 554px;
     background-color: #1a1a1a;
@@ -24,7 +24,7 @@
    }
    
    .card:hover {
-    box-shadow: 0px 0px 70px 30px rgba(0, 255, 117, 0.30);
+    box-shadow: 0px 0px 70px 30px rgba(47, 169, 250, 0.514)
    }
 
    .card-text{

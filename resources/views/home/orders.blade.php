@@ -64,6 +64,7 @@
         <div class="center">
             <table>
                 <tr>
+                    <th class="th_design">Order Date</th>
                     <th class="th_design">Game Name</th>
                     <th class="th_design">Quantity</th>
                     <th class="th_design">Price</th>
@@ -74,6 +75,7 @@
                 </tr>
                 @forelse ($order as $order)
                 <tr>
+                    <td>{{$order->created_at}}</td>
                     <td>{{$order->game_name}}</td>
                     <td>{{$order->quantity}}</td>
                     <td>{{$order->price}}</td>
