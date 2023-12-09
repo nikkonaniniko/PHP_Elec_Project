@@ -38,6 +38,9 @@
             width: 150px;
             height: 150px;
         }
+        .add_btn {
+            right: 150px;
+        }
     </style>
 </head>
 
@@ -76,7 +79,7 @@
                             <td>{{ $game->name }}</td>
                             <td>{{ $game->description }}</td>
                             <td>{{ $game->category }}</td>
-                            <td><img class="img_size" src="/game/{{ $game->image }}"></td>
+                            <td><img class="img_size" src="/storage/game/{{ $game->image }}"></td>
                             <td>{{ $game->quantity }}</td>
                             <td>{{ $game->price }}</td>
                             <td><a class="btn btn-info" href="{{url('edit_game', $game->id)}}">Edit</a></td>

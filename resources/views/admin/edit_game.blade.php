@@ -53,6 +53,15 @@
                     </div>
                 @endif
 
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger">{{ $error }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    @endforeach
+                @endif
+
                 <div class="div_center">
                     <h2>Edit {{$game->name}}</h2>
 
@@ -91,7 +100,7 @@
 
                         <div class="div_design">
                             <label for="image">Current Image</label>
-                            <img style="margin:auto" width="170px" height="170px" src="/game/{{$game->image}}" alt="Game Image">
+                            <img style="margin:auto" width="170px" height="170px" src="/storage/game/{{$game->image}}" alt="Game Image">
                         </div>
 
                         <div class="div_design">

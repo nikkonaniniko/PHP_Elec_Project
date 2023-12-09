@@ -58,6 +58,8 @@
                 <input type="text" name="search" placeholder="search...">
                 <input type="submit" value="Search" class="btn btn-secondary">
             </form>
+            <br>
+            <a href="{{url('order')}}" class="btn btn-secondary">View All</a>
 
             </div>
 
@@ -109,7 +111,6 @@
                 @endforelse
             </table>
             <br> <br>
-            {{ $orders->links() }}
         </div>
       </div>
       

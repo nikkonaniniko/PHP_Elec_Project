@@ -53,6 +53,15 @@
             </div>
             @endif
 
+            @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger">{{ $error }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    @endforeach
+                @endif
+
            <div class="div_center">
             <h2>Add Developer</h2>
             <form action="{{url('/add_developer')}}" method="POST" enctype="multipart/form-data">
@@ -82,7 +91,7 @@
                 <td>{{$data->name}}</td>
                 <td>{{$data->description}}</td>
                 <td>{{$data->designation}}</td>
-                <td><img class="img_size" src="/developer/{{ $data->image }}" alt=""></td>
+                <td><img class="img_size" src="/storage/developer/{{ $data->image }}" alt=""></td>
                 <td><a onclick="return confirm('Are you sure?')" class="btn btn-danger" href="{{url('delete_developer', $data->id)}}">Delete</a></td>
               </tr>
               

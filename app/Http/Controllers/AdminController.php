@@ -6,7 +6,9 @@ use App\Models\Category;
 use App\Models\Game;
 use App\Models\Order;
 use App\Models\Developers;
-
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,19 +27,17 @@ class AdminController extends Controller
     public function add_category(Request $request)
     {
         $validated = $request->validate([
-            'category_name' => 'required|unique:categories|max:255',
+            'cat_name' => 'required|unique:categories|max:255',
+        ], [
+            'cat_name.required' => 'Please input category name',
+            'cat_name.unique' => 'Category is already existing',
+            'cat_name.max' => 'Category name must be less than 255 characters'
         ]);
 
-        Category::create([
-            'category_name' => $request->category_name,
-            // 'user_id' => Auth::user()->id,
-            // 'created_at' => Carbon::now()
+        Category::insert([
+            'cat_name' => $request->cat_name,
+            'created_at' => Carbon::now()
         ]);
-        // $data = new category;
-
-        // $data->category_name = $request->category_name;
-
-        // $data->save();
 
         return redirect()->back()->with('message', 'Category Added Successfully');
     }
@@ -57,20 +57,51 @@ class AdminController extends Controller
 
     public function add_game(Request $request)
     {
-        $game = new game;
+        $validated = $request->validate([
+            'name' => 'required|unique:games|max:100',
+            'description' => 'required|max:300',
+            'category' => 'required',
+            'quantity' => 'required|numeric|gt:0',
+            'price' => 'required|numeric|gt:0',
+            'image' => 'required|mimes:jpeg,png,jpg'
+        ], [
+            'name.required' => 'Please input game name',
+            'name.unique' => 'Game is already existing',
+            'name.max' => 'Game name must be less than 100 characters',
+            'description.required' => 'Please input game description',
+            'description.max' => 'Game description must be less than 300 characters',
+            'category.required' => 'Please choose category',
+            'quantity.required' => 'Please input game quantity',
+            'quantity.numeric' => 'Quantity invalid',
+            'quantity.gt' => 'Quantity must not be 0',
+            'price.required' => 'Please input game price',
+            'price.numeric' => 'Price invalid',
+            'price.gt' => 'Price must not be 0',
+            'image.required' => 'Please input game image',
+            'image.mimes' => 'File not supported'
+        ]);
 
-        $game->name = $request->name;
-        $game->description = $request->description;
-        $game->price = $request->price;
-        $game->quantity = $request->quantity;
-        $game->category = $request->category;
+        $image = null;
 
-        $image = $request->image;
-        $imagename = time() . '.' . $image->getClientOriginalExtension();
-        $request->image->move('game', $imagename);
-        $game->image = $imagename;
+        if ($request->hasFile('image')) {
+            $uploadedFile = $request->file('image');
+            $originalFileName = $uploadedFile->getClientOriginalName();
 
-        $game->save();
+            $filename = Str::uuid() . '_' . $originalFileName;
+
+            $imagePathLocal = $uploadedFile->storeAs('game', $originalFileName, 'public');
+            $image = $originalFileName;
+        }
+
+        Game::insert([
+            'name' => $request->name,
+            'description' => $request->description,
+            'category' => $request->category,
+            'quantity' => $request->quantity,
+            'price' => $request->price,
+            'image' => $image,
+            'created_at' => Carbon::now()
+        ]);
 
         return redirect()->back()->with('message', 'Game Added Successfully');
     }
@@ -91,32 +122,55 @@ class AdminController extends Controller
     public function edit_game_confirm(Request $request, $id)
     {
         if (Auth::id()) {
+            $validated = $request->validate([
+                'name' => 'required|unique:games|max:100',
+                'description' => 'required|max:300',
+                'category' => 'required',
+                'quantity' => 'required|numeric|gt:0',
+                'price' => 'required|numeric|gt:0',
+                'image' => 'mimes:jpeg,png,jpg'
+            ], [
+                'name.required' => 'Please input game name',
+                'name.unique' => 'Game is already existing',
+                'name.max' => 'Game name must be less than 100 characters',
+                'description.required' => 'Please input game description',
+                'description.max' => 'Game description must be less than 300 characters',
+                'category.required' => 'Please choose category',
+                'quantity.required' => 'Please input game quantity',
+                'quantity.numeric' => 'Quantity invalid',
+                'quantity.gt' => 'Quantity must not be 0',
+                'price.required' => 'Please input game price',
+                'price.numeric' => 'Price invalid',
+                'price.gt' => 'Price must not be 0',
+                'image.mimes' => 'File not supported'
+            ]);
+
             $game = Game::find($id);
 
-            $game->name = $request->name;
-            $game->description = $request->description;
-            $game->price = $request->price;
-            $game->quantity = $request->quantity;
-            $game->category = $request->category;
-
-            // $oldImagePath = public_path('game/' . $game->image);
-            // if (file_exists($oldImagePath)) {
-
-            //     unlink($oldImagePath);
-            // }
-            $image = $request->image;
-            if ($image) {
-                $imagename = time() . '.' . $image->getClientOriginalExtension();
-                $request->image->move('game', $imagename);
-                $game->image = $imagename;
+            if ($request->hasFile('image')) {
+                $this->deleteandUploadFile($request->file('image'), $game->image);
+                $game->image = $request->file('image')->getClientOriginalName();
             }
 
-            $game->save();
+            $game->update([
+                'name' => $request->name,
+                'description' => $request->description,
+                'category' => $request->category,
+                'quantity' => $request->quantity,
+                'price' => $request->price
+            ]);
 
             return redirect()->back()->with('message', 'Game Edited Successfully');
         } else {
             return redirect('login');
         }
+    }
+
+    private function deleteAndUploadFile($uploadedFile, $existingFilePath) {
+        Storage::disk('public')->delete('category/' . $existingFilePath);
+
+        $originalFileName = $uploadedFile->getClientOriginalName();
+        $uploadedFile->storeAs('category', $originalFileName, 'public');
     }
 
     public function delete_game($id)
@@ -128,8 +182,8 @@ class AdminController extends Controller
 
     public function order()
     {
-        $order = Order::all();
-        return view('admin.order', compact('order'));
+        $orders = Order::orderBy('created_at', 'DESC')->paginate('10');
+        return view('admin.order', compact('orders'));
     }
 
     public function delivered($id)
@@ -145,9 +199,9 @@ class AdminController extends Controller
     public function searchdata(Request $request)
     {
         $searchText = $request->search;
-        $order = Order::where('name', 'LIKE', "%$searchText%")->orWhere('game_name', 'LIKE', "%$searchText%")->get();
+        $orders = Order::where('name', 'LIKE', "%$searchText%")->orWhere('game_name', 'LIKE', "%$searchText%")->orWhere('created_at', 'LIKE', "%$searchText%")->orderBy('created_at', 'DESC')->get();
 
-        return view('admin.order', compact('order'));
+        return view('admin.ordersearch', compact('orders'));
     }
 
     public function index() {
@@ -168,19 +222,41 @@ class AdminController extends Controller
 
     public function add_developer(Request $request)
     {
-        $data = new Developers();
 
-        $data->name = $request->name;
-        $data->description = $request->description;
-        $data->designation = $request->designation;
-        $image = $request->image;
-            if ($image) {
-                $imagename = time() . '.' . $image->getClientOriginalExtension();
-                $request->image->move('developer', $imagename);
-                $data->image = $imagename;
-            }
+        $validated = $request->validate([
+            'name' => 'required|unique:games|max:100',
+            'description' => 'required|max:150',
+            'designation' => 'required|max:100',
+            'image' => 'required|mimes:jpeg,png,jpg'
+        ], [
+            'name.required' => 'Please input developer name',
+            'name.unique' => 'Developer is already existing',
+            'name.max' => 'Developer name must be less than 100 characters',
+            'description.required' => 'Please input developer description',
+            'description.max' => 'Developer description must be less than 150 characters',
+            'image.required' => 'Please input developer image',
+            'image.mimes' => 'File not supported'
+        ]);
 
-        $data->save();
+        $image = null;
+
+        if ($request->hasFile('image')) {
+            $uploadedFile = $request->file('image');
+            $originalFileName = $uploadedFile->getClientOriginalName();
+
+            $filename = Str::uuid() . '_' . $originalFileName;
+
+            $imagePathLocal = $uploadedFile->storeAs('developer', $originalFileName, 'public');
+            $image = $originalFileName;
+        }
+
+        Developers::insert([
+            'name' => $request->name,
+            'description' => $request->description,
+            'designation' => $request->designation,
+            'image' => $image,
+            'created_at' => Carbon::now()
+        ]);
 
         return redirect()->back()->with('message', 'Developer Added Successfully');
     }
