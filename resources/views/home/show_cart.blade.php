@@ -28,6 +28,8 @@
             width: 50%;
             text-align: center;
             padding: 30px;
+            display: flex;
+            flex-direction: column;
         }
 
         table {

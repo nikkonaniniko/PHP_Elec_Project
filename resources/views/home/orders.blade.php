@@ -27,6 +27,8 @@
             width: 100%;
             padding: 30px;
             text-align: center;
+            display: flex;
+            justify-content: center
         }
         table {
             border: 3px solid white;
