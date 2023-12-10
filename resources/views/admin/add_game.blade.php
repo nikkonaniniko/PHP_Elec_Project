@@ -81,7 +81,7 @@
 
                         <div class="div_design">
                             <label for="price">Price</label>
-                            <input class="input_color" type="number" name="price" placeholder="$" required>
+                            <input class="input_color" type="number" name="price" placeholder="₱" required>
                         </div>
 
                         <div class="div_design">

@@ -108,8 +108,8 @@ class AdminController extends Controller
 
     public function show_game()
     {
-        $game = Game::all();
-        return view('admin.show_game', compact('game'));
+        $games = Game::orderBy('created_at', 'DESC')->paginate('5');
+        return view('admin.show_game', compact('games'));
     }
 
     public function edit_game($id)
@@ -123,10 +123,10 @@ class AdminController extends Controller
     {
         if (Auth::id()) {
             $validated = $request->validate([
-                'name' => 'required|unique:games|max:100',
+                'name' => 'required|max:100',
                 'description' => 'required|max:300',
                 'category' => 'required',
-                'quantity' => 'required|numeric|gt:0',
+                'quantity' => 'required|numeric',
                 'price' => 'required|numeric|gt:0',
                 'image' => 'mimes:jpeg,png,jpg'
             ], [

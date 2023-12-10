@@ -74,7 +74,7 @@
 
                     </tr>
 
-                    @foreach ($game as $game)
+                    @foreach ($games as $game)
                         <tr>
                             <td>{{ $game->name }}</td>
                             <td>{{ $game->description }}</td>
@@ -88,7 +88,8 @@
                         </tr>
                     @endforeach
                 </table>
-
+                <br> <br>
+                {{ $games->links('vendor.pagination.bootstrap-5') }}
             </div>
         </div>
 

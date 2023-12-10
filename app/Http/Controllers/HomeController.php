@@ -39,7 +39,13 @@ class HomeController extends Controller
             $total_processing = Order::where('delivery_status', '=', 'processing')->get()->count();
             $total_canceled = Order::where('delivery_status', '=', 'Canceled')->get()->count();
 
-            return view('admin.home', compact('total_games', 'total_orders', 'total_users', 'total_revenue', 'total_delivered', 'total_processing', 'total_canceled'));
+            $total_profit = 0;
+            $total_paid = Order::where('payment_status', '=', 'paid')->get();
+            foreach ($total_paid as $total_paid) {
+                $total_profit = $total_profit + $total_paid->price;
+            }            
+
+            return view('admin.home', compact('total_games', 'total_orders', 'total_users', 'total_revenue', 'total_delivered', 'total_processing', 'total_canceled', 'total_profit'));
         } else {
             // $game = Game::paginate(3); for pagination kodigo
             $game = Game::all();
@@ -143,7 +149,7 @@ class HomeController extends Controller
             $cart->delete();
         }
 
-        return redirect()->back()->with('message', 'We received your order. we will connect with you soon.');
+        return redirect()->back()->with('message', 'We received your order. Please access your Orders page for updates.');
     }
 
     public function show_orders()
@@ -152,9 +158,9 @@ class HomeController extends Controller
             $user = Auth::user();
             $userid = $user->id;
 
-            $order = Order::where('user_id', '=', $userid)->get();
+            $orders = Order::where('user_id', '=', $userid)->orderBy('created_at', 'DESC')->paginate('5');
 
-            return view('home.orders', compact('order'));
+            return view('home.orders', compact('orders'));
         } else {
             return redirect('login');
         }

@@ -26,6 +26,7 @@
 
 <body>
     <div class="hero_area">
+        @include('sweetalert::alert')
         @include('home.components.header')
         {{-- </div> --}}
 
@@ -49,22 +50,31 @@
                     <br>
                     <p style="color: blue;">₱{{ $game->price }}</p>
                 </h6>
+                @if($game->quantity > 0)
                 <h6>
                     Available stock: {{ $game->quantity }}
                 </h6>
+                @else
+                <label class="bg bg-danger">
+                    <strong>Out of Stock</strong>
+                </label>
+                @endif
 
+                @if($game->quantity > 0)
                 <form action="{{ url('add_cart', $game->id) }}" method="POST">
                     @csrf
                     <div class="row" style="margin-top: 20px;">
                         <div class="col-md-4">
-                            <input type="number" name="quantity" value="1" min="1"
-                                style="width: 80px;">
+                            <input type="number" name="quantity" value="1" min="1"style="width: 80px;">
                         </div>
                         <div class="col-md-4">
                             <input type="submit" value="Add to Cart">
                         </div>
                     </div>
-                </form>
+                </form>  
+                @else
+                @endif
+                
             </div>
         </div>
         {{-- </div> --}}

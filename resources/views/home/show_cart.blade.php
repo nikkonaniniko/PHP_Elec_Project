@@ -61,7 +61,7 @@
             color: white;
         }
         .cart-section {
-        padding: 50px;
+        padding: 30px;
         text-align: center;
         background-color: #525252;
         color: white;
@@ -117,10 +117,9 @@
                     <tr>
                         <td>{{ $cart->game_name }}</td>
                         <td>{{ $cart->quantity }}</td>
-                        <td>${{ $cart->price }}</td>
+                        <td>₱{{ $cart->price }}</td>
                         <td><img class="img_design" src="/game/{{ $cart->image }}" alt="Game Image"></td>
-                        {{-- <td><a onclick="return confirm('Are you sure?')" class="btn btn-danger" href="{{ url('remove_cart', $cart->id) }}">Remove</a></td> --}}
-                        <td><a class="btn btn-danger" onclick="confirmation(event)" href="{{ url('remove_cart', $cart->id) }}">Remove</a></td>
+                        <td><a onclick="return confirm('Are you sure?')" class="btn btn-danger" href="{{ url('remove_cart', $cart->id) }}">Remove</a></td>
                     </tr>
                     <?php $totalprice = $totalprice + $cart->price; ?>
 
@@ -131,7 +130,7 @@
             </table>
 
             <div>
-                <h1 class="total_design">Total Price: ${{ $totalprice }}</h1>
+                <h1 class="total_design">Total Price: ₱ {{ $totalprice }}</h1>
             </div>
 
             <div class="order-section">

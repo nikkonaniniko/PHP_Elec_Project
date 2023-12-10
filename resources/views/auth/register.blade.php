@@ -10,7 +10,7 @@
             @csrf
 
             <div>
-                <x-label for="name" value="{{ __('Name') }}" />
+                <x-label for="name" value="{{ __('Name (Format: FN LN)') }}" />
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
@@ -20,12 +20,12 @@
             </div>
 
             <div class="mt-4">
-                <x-label for="phone" value="{{ __('Contact Number') }}" />
+                <x-label for="phone" value="{{ __('Contact Number (+63XXXXXXXXXX)') }}" />
                 <x-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="phone" />
             </div>
 
             <div class="mt-4">
-                <x-label for="address" value="{{ __('Address') }}" />
+                <x-label for="address" value="{{ __('Full Address') }}" />
                 <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autocomplete="address" />
             </div>
 

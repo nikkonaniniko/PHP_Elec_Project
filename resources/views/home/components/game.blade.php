@@ -25,6 +25,7 @@
                                 <a href="{{ url('game_details', $games->id) }}" class="option1">
                                     View Details
                                 </a>
+                                @if ($games->quantity > 0)
                                 <form action="{{ url('add_cart', $games->id) }}" method="POST">
                                     @csrf
                                     <div class="row">
@@ -36,7 +37,11 @@
                                             <input type="submit" value="Add to Cart">
                                         </div>
                                     </div>
-                                </form>
+                                </form>  
+                                @else
+                                  <label class="bg bg-danger" style="padding: 5px;">Out of Stock</label>  
+                                @endif
+                                
                             </div>
                         </div>
                         <div class="img-box">

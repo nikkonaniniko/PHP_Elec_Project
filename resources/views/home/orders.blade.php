@@ -24,28 +24,27 @@
     <style type="text/css">
         .center {
             margin: auto;
-            width: 80%;
+            width: 100%;
             padding: 30px;
             text-align: center;
         }
         table {
-            border: 3px solid black;
+            border: 3px solid white;
+            color: white;
         }
 
         table th {
-            border: 3px solid black;
-            padding: 10px;
+            border: 3px solid white;
         }
 
         table td {
-            border: 3px solid black;
-            padding: 10px;
+            border: 3px solid white;
         }
 
         .th_design {
             font-size: 20px;
             padding: 5px;
-            background-color: red;
+            background-color: rgb(51, 176, 226);
             color: white;
         }
 
@@ -54,12 +53,29 @@
             height: 120px;
             padding: 5px;
         }
+        .cart-section {
+        padding: 10px;
+        text-align: center;
+        background-color: #525252;
+        color: white;
+        }
     </style>
 
    </head>
    <body>
       <div class="hero_area">
          @include('home.components.header')
+         <div class="bg">
+            <img src="images/bg.jpg">
+        </div>
+
+        <div class="cart-section">
+            <div class="heading_container heading_center">
+                <h2>
+                    My <span>Orders</span>
+                </h2>
+        </div> 
+        </div>
 
         <div class="center">
             <table>
@@ -73,7 +89,7 @@
                     <th class="th_design">Image</th>
                     <th class="th_design">Action</th>
                 </tr>
-                @forelse ($order as $order)
+                @forelse ($orders as $order)
                 <tr>
                     <td>{{$order->created_at}}</td>
                     <td>{{$order->game_name}}</td>
@@ -103,6 +119,8 @@
                 @endforelse
                 
             </table>
+            <br><br>
+            {{ $orders->links('vendor.pagination.bootstrap-5') }}
         </div>
       </div>
 

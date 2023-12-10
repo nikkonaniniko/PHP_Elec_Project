@@ -70,7 +70,7 @@
             
                 </div>
                 <div class="img-box">
-                    <img style="width: 100px" src="developer/{{ $developers->image }}" alt="">
+                    <img style="width: 120px" src="/storage/developer/{{ $developers->image }}" alt="">
                 </div>
                 <div class="detail-box">
                     <h5>
