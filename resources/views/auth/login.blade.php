@@ -9,8 +9,6 @@
             <x-authentication-card-logo />
         </x-slot>
 
-        <x-validation-errors class="mb-4" />
-
         @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
                 {{ session('status') }}
@@ -46,13 +44,14 @@
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
-
-           
             </div>
+            
             <x-button id="btn" class="ml-4">
                 {{ __('Log in') }}
             </x-button>
         </form>
+        <br><br>
+        <x-validation-errors class="mb-4" />{{-- TEMP FIX --}}
     </div>
 </div>
 </x-guest-layout>
