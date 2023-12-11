@@ -1,0 +1,47 @@
+body{
+    background-image: url('/images/bg.jpg');
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    margin-left:4%;
+} /* TEMP FIX, nakacenter siya IF yung monitor is 1920 x 1080. If hindi makahanap solution ok na ito basta nakafullscreen at wag lang i-zoom out */
+
+.card{
+    height: auto;
+    width: 400px;
+    background-color: whitesmoke;
+    border-radius:25px;
+    padding: 20px;
+}
+
+
+.circle{
+    position: relative;
+    width: 125px;
+    height: 125px;
+    background-color: black;
+    border-radius: 100px;
+
+}
+
+.circle-center{
+    position:relative;
+    left:120px;
+}
+
+.login{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position:relative;
+    font-size: 24px;;
+    color:black;
+}
+
+.logo{
+    margin-top: 10px;
+}
