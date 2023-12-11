@@ -43,14 +43,14 @@
                             </div>
                         </div>
                         <div class="img-box">
-                            <img src="game/{{ $games->image }}" alt="">
+                            <img src="/storage/game/{{ $games->image }}" alt="">
                         </div>
                         <div class="detail-box">
                             <h5>
                                 {{ $games->name }}
                             </h5>
                             <h6>
-                                ${{ $games->price }}
+                                ₱{{ $games->price }}
                             </h6>
                         </div>
                     </div>

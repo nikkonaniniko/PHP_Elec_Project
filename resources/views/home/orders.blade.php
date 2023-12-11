@@ -37,10 +37,14 @@
 
         table th {
             border: 3px solid white;
+            padding: 10px;
+            background: white;
         }
 
         table td {
             border: 3px solid white;
+            padding: 10px;
+            background: rgba(73, 73, 73, 0.76);
         }
 
         .th_design {
@@ -109,7 +113,7 @@
                         <p>Thank You!</p>
 
                         @else
-                        <p>Sorry</p>
+                        <p>Canceled</p>
 
                         @endif
                     </td>

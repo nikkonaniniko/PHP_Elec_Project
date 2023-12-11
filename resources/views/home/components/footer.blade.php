@@ -11,6 +11,29 @@ bottom:0;
 margin-top: auto;
 width:100%;
 }
+a:link {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(51, 176, 226);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(135, 221, 255);
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+a:active {
+  color: rgb(31, 128, 167);
+  background-color: transparent;
+  text-decoration: underline;
+}
 </style>
 <script src="https://kit.fontawesome.com/f774b2efba.js" crossorigin="anonymous"></script>
 </header>
@@ -24,13 +47,13 @@ width:100%;
                         <hr class="light">
                         <h5><strong>About Us</strong></h5>
                         <hr class="light">
-                        <p>9999-9999<p>
-                        <p>Email<p>
-                        <p><a href="{{ url('about_us')}}">Go to About Us page</a></p>
+                        <p><i class="bi bi-telephone-fill"></i>  +639172393210<p>
+                        <p><i class="bi bi-envelope-fill"></i>  lootbox@gmail.com<p>
+                        <p><a href="{{ url('about_us')}}">Meet our Team</a></p>
                     </div>
                     <div class="col-md-4">
                         <hr class="light">
-                        <h5><strong>Developers</strong></h5>
+                        <h5><strong>Group 4</strong></h5>
                         <hr class="light">
                         <p>Kyle Consebido</p>
                         <p>Williamson Ding</p>
@@ -40,7 +63,7 @@ width:100%;
                     </div>
                     <div class="col-12">
                         <hr class="light">
-                        <h6>Web Programming [2023]</h6>
+                        <h6>IT ELEC3C [2023]</h6>
                         <h6>© 2023 Lootbox. All Rights Reserved.</h6>
                     </div>
                 </div>

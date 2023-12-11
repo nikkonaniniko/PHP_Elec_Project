@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="img-box">
-                            <img src="game/{{ $games->image }}" alt="">
+                            <img src="/storage/game/{{ $games->image }}" alt="">
                         </div>
                         <div class="detail-box">
                             <h5>

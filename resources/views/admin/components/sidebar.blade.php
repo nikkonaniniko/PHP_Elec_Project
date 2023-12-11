@@ -51,7 +51,7 @@
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a class="nav-link" href="{{url('/view_game')}}">Add Games</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('/view_game')}}">Add Game</a></li>
             <li class="nav-item"> <a class="nav-link" href="{{url('show_game')}}">Show Games</a></li>
           </ul>
         </div>

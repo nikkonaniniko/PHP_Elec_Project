@@ -24,21 +24,63 @@
     <link href="home/css/responsive.css" rel="stylesheet" />
 </head>
 
+<style type="text/css">
+.detail-box {
+    padding: 5px;
+    color: white;
+    background-image: linear-gradient(163deg, #a2b1a9 0%, rgb(51, 176, 226) 100%);
+    border-radius: 10px;
+    transition: all .3s;
+}
+.detail-box:hover {
+    box-shadow: 0px 0px 70px 30px rgba(47, 169, 250, 0.514)
+}
+.detail-box2 {
+    background-color: #2b2b2bd0;
+    border-radius: 10px;
+    transition: all .2s;
+}
+.detail-box2:hover {
+    transform: scale(0.98);
+    border-radius: 50px;
+}
+
+.detail-text {
+    padding: 10px;
+    color: azure;
+    gap: 1rem;
+    display: grid;
+    text-align: center;
+}
+.img-box:hover {
+    transform: scale(1.05);
+}
+.img-box {
+    padding: 30px;
+    margin-left: 55px;
+}
+</style>
+
 <body>
-    <div class="hero_area">
         @include('sweetalert::alert')
         @include('home.components.header')
-        {{-- </div> --}}
+        <div class="bg">
+            <img src="images/bg.jpg">
+        </div>
 
+        <div class="hero_area">
+        
         <div class="col-sm-6 col-md-4 col-lg-4" style="margin: auto; width: 50%; padding: 30px;">
 
-            <div class="img-box" style="padding: 30px;">
-                <img style="width: 400px; height: 400px;" src="game/{{ $game->image }}" alt="">
+            <div class="img-box">
+                <img style="width: 400px; height: 400px;" src="/storage/game/{{ $game->image }}" alt="">
             </div>
             <div class="detail-box">
-                <h5>
+                <div class="detail-box2">
+                    <div class="detail-text">
+                <h4>
                     {{ $game->name }}
-                </h5>
+                </h4>
                 <h6>
                     Description: {{ $game->description }}
                 </h6>
@@ -46,9 +88,7 @@
                     Category: {{ $game->category }}
                 </h6>
                 <h6>
-                    Price
-                    <br>
-                    <p style="color: blue;">₱{{ $game->price }}</p>
+                    Price: ₱{{ $game->price }}
                 </h6>
                 @if($game->quantity > 0)
                 <h6>
@@ -77,19 +117,9 @@
                 
             </div>
         </div>
-        {{-- </div> --}}
-
-        @include('home.components.footer')
-
-
-        <div class="cpy_">
-            <p class="mx-auto">© 2021 All Rights Reserved By <a href="https://html.design/">Free Html Templates</a><br>
-
-                Distributed By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a>
-
-            </p>
         </div>
-
+        </div>
+        @include('home.components.footer')
 
         <!-- jQery -->
         <script src="js/jquery-3.4.1.min.js"></script>

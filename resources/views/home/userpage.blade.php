@@ -27,7 +27,7 @@
       {{-- <div class="hero_area"> --}}
          @include('home.components.header')
          @include('home.components.slider')
-         <video src="images/cod.mp4" width="100%" autoplay muted loop></video>
+         <video src="images/trailers.mp4" width="100%" style="margin: auto;" autoplay muted loop></video>
       </div>
       
       @include('home.components.game')

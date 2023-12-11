@@ -25,7 +25,7 @@
     
     <style type="text/css">
         .about-section {
-        padding: 50px;
+        padding: 20px;
         text-align: center;
         background-color: #525252;
         color: white;
@@ -52,7 +52,7 @@
         <h2>
             About <span>Us</span>
         </h2>
-  <p>Some text about who we are and what we do.</p>
+  <h6 style="padding-top: 5px;">Dedicated to delivering unparalleled gaming experiences, our passionate team of individuals is committed to providing you with a curated selection of the finest games at prices that won't break the bank.</h6>
 </div>
 </div>
 

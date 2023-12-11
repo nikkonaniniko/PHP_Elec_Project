@@ -25,7 +25,7 @@
     
     <style type="text/css">
         .about-section {
-        padding: 50px;
+        padding: 20px;
         text-align: center;
         background-color: #525252;
         color: white;
@@ -53,7 +53,7 @@
             Contact <span>Us</span>
         </h2>
         
-  <p>Reach out to us by contacting us in the information shown below.</p>
+        <h6 style="padding-top: 5px;">Feel free to reach out to us using the contact information provided below for any inquiries or assistance.</h6>
 </div>
 
 </div>

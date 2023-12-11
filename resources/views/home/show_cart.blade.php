@@ -120,7 +120,7 @@
                         <td>{{ $cart->game_name }}</td>
                         <td>{{ $cart->quantity }}</td>
                         <td>₱{{ $cart->price }}</td>
-                        <td><img class="img_design" src="/game/{{ $cart->image }}" alt="Game Image"></td>
+                        <td><img class="img_design" src="/storage/game/{{ $cart->image }}" alt="Game Image"></td>
                         <td><a onclick="return confirm('Are you sure?')" class="btn btn-danger" href="{{ url('remove_cart', $cart->id) }}">Remove</a></td>
                     </tr>
                     <?php $totalprice = $totalprice + $cart->price; ?>
