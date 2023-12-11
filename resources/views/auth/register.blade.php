@@ -47,6 +47,7 @@
                         {{-- <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" /> --}}
                         <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" placeholder="{{ __('Confirm Password') }}"/>
                     </div>
+                    <x-validation-errors />
 
                     @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                         <div class="mt-4">
@@ -75,8 +76,6 @@
                         </x-button>
                     </div>
                 </form>
-                <br><br>
-                <x-validation-errors class="mb-4" />
             </div>
         </div>
     {{-- </x-authentication-card> --}}

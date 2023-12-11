@@ -2,6 +2,7 @@ body{
     background-image: url('/images/bg.jpg');
 }
 .container{
+    position:relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +17,8 @@ body{
     top: 10px;
 }
 .card{
-    height: 400px;
+    position:relative;
+    height:auto;
     width: 400px;
     background-color: whitesmoke;
     border-radius:30px;
@@ -75,4 +77,10 @@ body{
 }
 .login{
     color: black;
+}
+.err_message{
+    position:relative;
+    top: 50px;
+    left: 30px;
+
 }

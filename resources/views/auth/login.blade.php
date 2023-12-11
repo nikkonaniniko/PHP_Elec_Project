@@ -30,8 +30,9 @@
             <div class="mt-4">
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" placeholder="{{ __('Password') }}" />
             </div>
+                    <x-validation-errors class="err_message" />{{-- TEMP FIX --}}
 
-            <div class="block mt-4">
+            <div class="block mt-4 relative">
                 <label for="remember_me" class="flex items-center">
                     <x-checkbox id="remember_me" name="remember" />
                     <span id="remember_me"class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
@@ -50,8 +51,9 @@
                 {{ __('Log in') }}
             </x-button>
         </form>
+
         <br><br>
-        <x-validation-errors class="mb-4" />{{-- TEMP FIX --}}
+
     </div>
 </div>
 </x-guest-layout>

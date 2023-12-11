@@ -10,7 +10,7 @@ body{
 } /* TEMP FIX, nakacenter siya IF yung monitor is 1920 x 1080. If hindi makahanap solution ok na ito basta nakafullscreen at wag lang i-zoom out */
 
 .card{
-    height: 615px;
+    height: auto;
     width: 400px;
     background-color: whitesmoke;
     border-radius:25px;
