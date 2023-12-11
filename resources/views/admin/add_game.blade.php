@@ -28,12 +28,30 @@
             width: 200px;
         }
 
+        labelCategory {
+            display: inline-flex;
+            width: 200px;
+            margin-left: -90px;
+            gap: 200px;
+        }
+
+        labelImage {
+            display: inline-flex;
+            width: 200px;
+            margin-left: 140px;
+            gap: 300px;
+        }
+
         .div_design {
             padding-bottom: 15px;
         }
 
         .div_design label {
             text-align: left;
+        }
+
+        .div_category {
+            padding-left: 100px;
         }
     </style>
 </head>
@@ -91,18 +109,20 @@
                         </div>
 
                         <div class="div_design">
-                            <label for="category">Category</label>
-                            <select class="input_color" name="category" id="" required>
+                            <labelCategory for="category">Category</labelCategory>
+                            <select class="input_color ms-*-5" name="category" id="" required>
                                 <option value="" selected="">---</option>
+                                
                                 @foreach ($category as $category)
                                     <option value="{{ $category->category_name }}">{{ $category->category_name }}
                                     </option>
                                 @endforeach
+                                
                             </select>
                         </div>
 
                         <div class="div_design">
-                            <label for="image">Image</label>
+                            <labelImage for="image">Image</labelImage>
                             <input type="file" name="image" required>
                         </div>
 

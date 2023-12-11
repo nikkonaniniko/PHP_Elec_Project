@@ -18,6 +18,23 @@
         color: black;
         padding: 5px;
     }
+    labelName{
+      display: inline-flex;
+      width: 200px;
+    }
+    labelImage{
+      display: inline-flex;
+      width: 200px;
+      margin-left: 135px;
+    }
+    labelDescription{
+      display: inline-flex;
+      width: 200px;
+    }
+    labelDesignation{
+      display: inline-flex;
+      width: 200px;
+    }
     .center {
       margin: auto;
       width: 50%;
@@ -34,6 +51,11 @@
     }
     .img_size {
             width: 120px;
+    }
+
+    .btn{
+      margin-top: 10px;
+      margin-bottom: 10px;
     }
     </style>
   </head>
@@ -66,13 +88,13 @@
             <h2>Add Developer</h2>
             <form action="{{url('/add_developer')}}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <label for="name">Name</label>
+                <labelName for="name">Name</labelName>
                 <input class="input_color" type="text" name="name" placeholder="Write Developer's Name"> <br>
-                <label for="name">Description</label>
+                <labelDescription for="name">Description</labelDescription>
                 <input class="input_color" type="text" name="description" placeholder="Write Description"> <br>
-                <label for="name">Designation</label>
+                <labelDesignation for="name">Designation</labelDesignation>
                 <input class="input_color" type="text" name="designation" placeholder="Write Designation"> <br>
-                <label for="name">Image</label>
+                <labelImage for="name">Image</labelImage>
                 <input type="file" name="image" required> <br>
                 <input type="submit" class="btn btn-success" name="submit" value="Add Developer">
             </form>

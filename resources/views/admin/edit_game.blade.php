@@ -31,6 +31,27 @@
             padding-bottom: 15px;
         }
 
+        labelCategory1 {
+            display: inline-flex;
+            width: 200px;
+            margin-left: -90px;
+            gap: 200px;
+        }
+
+        labelCurrentI {
+            display: inline-flex;
+            width: 200px;
+            margin-left: -100px;
+            gap: 200px;
+        }
+        
+        labelNewIm {
+            display: inline-flex;
+            width: 200px;
+            margin-left: 140px;
+            gap: 190px;
+        }
+
         .div_design label {
             text-align: left;
         }
@@ -88,7 +109,7 @@
                         </div>
 
                         <div class="div_design">
-                            <label for="category">Category</label>
+                            <labelCategory1 for="category">Category</labelCategory1>
                             <select class="input_color" name="category" id="" required>
                                 <option value="{{$game->category}}" selected="">{{$game->category}}</option>
                                 @foreach ($category as $category)
@@ -99,12 +120,12 @@
                         </div>
 
                         <div class="div_design">
-                            <label for="image">Current Image</label>
+                            <labelCurrentI for="image">Current Image</labelCurrentI>
                             <img style="margin:auto" width="170px" height="170px" src="/storage/game/{{$game->image}}" alt="Game Image">
                         </div>
 
                         <div class="div_design">
-                            <label for="image">New Image</label>
+                            <labelNewIm for="image">New Image</labelNewIm>
                             <input type="file" name="image">
                         </div>
 
