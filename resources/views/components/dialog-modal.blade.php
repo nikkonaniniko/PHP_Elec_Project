@@ -1,4 +1,8 @@
+<head>
+<link rel="stylesheet" href="{{ asset('assets/css/updateprofile.css') }}">
+</head>
 @props(['id' => null, 'maxWidth' => null])
+
 
 <x-modal :id="$id" :maxWidth="$maxWidth" {{ $attributes }}>
     <div class="px-6 py-4">
