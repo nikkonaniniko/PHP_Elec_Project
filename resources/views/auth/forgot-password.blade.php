@@ -39,6 +39,8 @@
  --}}
 <head>
     <link rel="stylesheet" href="{{ asset('assets/css/forgotpass.css') }}">
+    <link rel="shortcut icon" href="images/favicon.png" type="">
+    <title>Lootbox | Forgot Password</title>
 </head>
 
 <x-guest-layout>

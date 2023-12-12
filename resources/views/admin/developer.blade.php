@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="images/favicon.png" type="">
 
     @include('admin.components.css')
     
@@ -89,11 +90,11 @@
             <form action="{{url('/add_developer')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <labelName for="name">Name</labelName>
-                <input class="input_color" type="text" name="name" placeholder="Write Developer's Name"> <br>
+                <input class="input_color" type="text" name="name" placeholder="FN LN"> <br>
                 <labelDescription for="name">Description</labelDescription>
-                <input class="input_color" type="text" name="description" placeholder="Write Description"> <br>
+                <input class="input_color" type="text" name="description" placeholder="Description..."> <br>
                 <labelDesignation for="name">Designation</labelDesignation>
-                <input class="input_color" type="text" name="designation" placeholder="Write Designation"> <br>
+                <input class="input_color" type="text" name="designation" placeholder="Designation..."> <br>
                 <labelImage for="name">Image</labelImage>
                 <input type="file" name="image" required> <br>
                 <input type="submit" class="btn btn-success" name="submit" value="Add Developer">

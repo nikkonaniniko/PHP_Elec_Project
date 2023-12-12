@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <base href="/public">
+    <link rel="shortcut icon" href="images/favicon.png" type="">
     @include('admin.components.css')
 
     <style>
@@ -90,7 +91,7 @@
                     <td>{{$order->price}}</td>
                     <td>{{$order->payment_status}}</td>
                     <td>{{$order->delivery_status}}</td>
-                    <td><img style="width: 100px; height: 100px;" src="/game/{{$order->image}}" alt="Game Image"></td>
+                    <td><img style="width: 100px; height: 100px;" src="/storage/game/{{$order->image}}" alt="Game Image"></td>
                     <td>
                     @if($order->delivery_status=='processing')
                         <a onclick="return confirm('Are you sure?')" href="{{url('delivered', $order->id)}}" class="btn btn-success">Delivered</a>

@@ -6,6 +6,8 @@
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
+    <link rel="shortcut icon" href="images/favicon.png" type="">
+
     @include('admin.components.css')
 
     <style type="text/css">

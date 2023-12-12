@@ -16,16 +16,16 @@
 
         <div class="row">
 
-            @foreach ($game as $games)
+            @foreach ($game as $game)
                 <div class="col-sm-6 col-md-4 col-lg-4">
                     <div class="box">
                         <div class="option_container">
                             <div class="options">
-                                <a href="{{ url('game_details', $games->id) }}" class="option1">
+                                <a href="{{ url('game_details', $game->id) }}" class="option1">
                                     View Details
                                 </a>
-                                @if ($games->quantity > 0)
-                                <form action="{{ url('add_cart', $games->id) }}" method="POST">
+                                @if ($game->quantity > 0)
+                                <form action="{{ url('add_cart', $game->id) }}" method="POST">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-4">
@@ -43,14 +43,14 @@
                             </div>
                         </div>
                         <div class="img-box">
-                            <img src="/storage/game/{{ $games->image }}" alt="">
+                            <img src="/storage/game/{{ $game->image }}" alt="">
                         </div>
                         <div class="detail-box">
                             <h5>
-                                {{ $games->name }}
+                                {{ $game->name }}
                             </h5>
                             <h6>
-                                ₱{{ $games->price }}
+                                ₱{{ $game->price }}
                             </h6>
                         </div>
                     </div>

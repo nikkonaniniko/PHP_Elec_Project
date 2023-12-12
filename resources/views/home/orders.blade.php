@@ -103,7 +103,7 @@
                     <td>{{$order->price}}</td>
                     <td>{{$order->payment_status}}</td>
                     <td>{{$order->delivery_status}}</td>
-                    <td><img src="/game/{{$order->image}}" alt="Game Image" class="img_design"></td>
+                    <td><img src="/storage/game/{{$order->image}}" alt="Game Image" class="img_design"></td>
                     <td>
                         @if($order->delivery_status=='processing')
                         

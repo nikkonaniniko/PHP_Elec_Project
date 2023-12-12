@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="images/favicon.png" type="">
 
     @include('admin.components.css')
     
@@ -54,7 +55,7 @@
             <h2>Add Category</h2>
             <form action="{{url('/add_category')}}" method="POST">
                 @csrf
-                <input class="input_color" type="text" name="category_name" placeholder="Write Category Name">
+                <input class="input_color" type="text" name="category_name" placeholder="Category...">
                 <input type="submit" class="btn btn-success" name="submit" value="Add Category">
             </form>
             </div> 

@@ -1,5 +1,7 @@
 <head>
     <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
+    <link rel="shortcut icon" href="images/favicon.png" type="">
+    <title>Lootbox | Login</title>
 </head>
 
 <x-guest-layout>

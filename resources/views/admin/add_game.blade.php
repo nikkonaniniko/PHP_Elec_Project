@@ -4,6 +4,7 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="shortcut icon" href="images/favicon.png" type="">
 
     @include('admin.components.css')
 
@@ -88,7 +89,7 @@
                         @csrf
                         <div class="div_design">
                             <label for="name">Name</label>
-                            <input class="input_color" type="text" name="name" placeholder="Game Name" required>
+                            <input class="input_color" type="text" name="name" placeholder="Game Name - Platform" required>
                         </div>
 
                         <div class="div_design">
@@ -99,7 +100,7 @@
 
                         <div class="div_design">
                             <label for="price">Price</label>
-                            <input class="input_color" type="number" name="price" placeholder="₱" required>
+                            <input class="input_color" type="number" name="price" placeholder="₱" min="1" required>
                         </div>
 
                         <div class="div_design">

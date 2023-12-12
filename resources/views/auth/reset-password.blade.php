@@ -1,3 +1,8 @@
+<head>
+    <link rel="shortcut icon" href="/images/favicon.png" type="">
+    <title>Lootbox | Reset Password</title>
+</head>
+
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">

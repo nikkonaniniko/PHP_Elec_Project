@@ -15,9 +15,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // $game = Game::paginate(3); for pagination kodigo
-        $game = Game::all();
-        return view('home.userpage', compact('game'));
+        $games = Game::orderBy('created_at', 'DESC')->paginate('6');
+        // $game = Game::all();
+        return view('home.userpage', compact('games'));
     }
 
     public function redirect()
@@ -43,13 +43,16 @@ class HomeController extends Controller
             $total_paid = Order::where('payment_status', '=', 'paid')->get();
             foreach ($total_paid as $total_paid) {
                 $total_profit = $total_profit + $total_paid->price;
-            }            
+            } 
+            
+            $today = date('Y-m-d');
+            $sales_today = Order::whereDate('created_at', $today)->sum('price');
 
-            return view('admin.home', compact('total_games', 'total_orders', 'total_users', 'total_revenue', 'total_delivered', 'total_processing', 'total_canceled', 'total_profit'));
+            return view('admin.home', compact('total_games', 'total_orders', 'total_users', 'total_revenue', 'total_delivered', 'total_processing', 'total_canceled', 'total_profit', 'sales_today'));
         } else {
-            // $game = Game::paginate(3); for pagination kodigo
-            $game = Game::all();
-            return view('home.userpage', compact('game'));
+            $games = Game::orderBy('created_at', 'DESC')->paginate('6'); 
+            // $game = Game::all();
+            return view('home.userpage', compact('games'));
         }
     }
 
@@ -187,8 +190,9 @@ class HomeController extends Controller
 
     public function games()
     {
-        $game = Game::all();
-        return view('home.all_games', compact('game'));
+        $games = Game::orderBy('created_at', 'DESC')->paginate('9');
+        // $game = Game::all();
+        return view('home.all_games', compact('games'));
     }
 
     public function search_games(Request $request)

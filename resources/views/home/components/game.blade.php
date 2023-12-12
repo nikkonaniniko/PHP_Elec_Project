@@ -59,9 +59,13 @@
                 </div>
             @endforeach
 
-            {{-- <span style="padding-top: 20px;">
-          {!!$game->withQueryString()->links('pagination::bootstrap-5')!!}
-         </span> kodigo for pagination tas dat $game as $games then change variables to $games --}}
+            {{-- {{ $games->links('vendor.pagination.bootstrap-5') }} --}}
+
+            <span style="padding-top: 20px;">
+          {{-- {!!$game->appends($_GET)->links('vendor.pagination.bootstrap-5')!!} --}}
+          {{ $games->appends($_GET)->links() }}
+         </span> 
+         {{-- kodigo for pagination tas dat $game as $games then change variables to $games --}}
 
             {{-- <div class="btn-box">
           <a href="">

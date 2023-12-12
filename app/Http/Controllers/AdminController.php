@@ -167,10 +167,10 @@ class AdminController extends Controller
     }
 
     private function deleteAndUploadFile($uploadedFile, $existingFilePath) {
-        Storage::disk('public')->delete('category/' . $existingFilePath);
+        Storage::disk('public')->delete('game/' . $existingFilePath);
 
         $originalFileName = $uploadedFile->getClientOriginalName();
-        $uploadedFile->storeAs('category', $originalFileName, 'public');
+        $uploadedFile->storeAs('game', $originalFileName, 'public');
     }
 
     public function delete_game($id)

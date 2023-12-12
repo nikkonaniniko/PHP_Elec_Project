@@ -1,3 +1,8 @@
+<head>
+    <link rel="shortcut icon" href="/images/favicon.png" type="">
+     <title>Lootbox | Profile Settings</title>
+</head>
+
 <x-app-layout>
     <x-slot name="header">
         <a href="{{url('redirect')}}"><img width="100px" src="/images/logo.png"
