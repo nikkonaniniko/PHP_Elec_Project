@@ -120,7 +120,7 @@
                 </tr>
 
                 @empty
-                <td colspan="7">No Orders Found</td>
+                <td colspan="8">No Orders Found</td>
 
                 @endforelse
                 

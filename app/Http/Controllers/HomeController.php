@@ -46,7 +46,7 @@ class HomeController extends Controller
             } 
             
             $today = date('Y-m-d');
-            $sales_today = Order::whereDate('created_at', $today)->sum('price');
+            $sales_today = Order::where('payment_status', '=', 'paid')->whereDate('created_at', $today)->sum('price');
 
             return view('admin.home', compact('total_games', 'total_orders', 'total_users', 'total_revenue', 'total_delivered', 'total_processing', 'total_canceled', 'total_profit', 'sales_today'));
         } else {
@@ -183,14 +183,16 @@ class HomeController extends Controller
     {
         $search_game = $request->search;
         // $game=Game::where('name', 'LIKE', '%$search_game%')->get();
-        $game = Game::where('name', 'LIKE', "%$search_game%")->orWhere('category', 'LIKE', "%$search_game%")->get();
+        // $game = Game::where('name', 'LIKE', "%$search_game%")->orWhere('category', 'LIKE', "%$search_game%")->get();
 
-        return view('home.userpage', compact('game'));
+        $games = Game::where('name', 'LIKE', "%$search_game%")->orWhere('category', 'LIKE', "%$search_game%")->paginate('6');
+
+        return view('home.userpage', compact('games'));
     }
 
     public function games()
     {
-        $games = Game::orderBy('created_at', 'DESC')->paginate('9');
+        $games = Game::orderBy('name', 'ASC')->paginate('9');
         // $game = Game::all();
         return view('home.all_games', compact('games'));
     }
@@ -199,9 +201,9 @@ class HomeController extends Controller
     {
         $search_games = $request->search;
         // $game=Game::where('name', 'LIKE', '%$search_game%')->get();
-        $game = Game::where('name', 'LIKE', "%$search_games%")->orWhere('category', 'LIKE', "%$search_games%")->get();
+        $games = Game::where('name', 'LIKE', "%$search_games%")->orWhere('category', 'LIKE', "%$search_games%")->paginate('6');
 
-        return view('home.all_games', compact('game'));
+        return view('home.all_games', compact('games'));
     }
 
     public function about_us() {

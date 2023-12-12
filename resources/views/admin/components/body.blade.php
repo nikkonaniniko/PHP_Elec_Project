@@ -141,7 +141,7 @@
                             <div class="col-3">
                             </div>
                         </div>
-                        <h6 class="text-muted font-weight-normal">Sales Today</h6>
+                        <h6 class="text-muted font-weight-normal">Revenue Today</h6>
                     </div>
                 </div>
             </div>

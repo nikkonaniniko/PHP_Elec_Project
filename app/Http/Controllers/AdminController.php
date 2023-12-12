@@ -27,15 +27,15 @@ class AdminController extends Controller
     public function add_category(Request $request)
     {
         $validated = $request->validate([
-            'cat_name' => 'required|unique:categories|max:255',
+            'category_name' => 'required|unique:categories|max:255',
         ], [
-            'cat_name.required' => 'Please input category name',
-            'cat_name.unique' => 'Category is already existing',
-            'cat_name.max' => 'Category name must be less than 255 characters'
+            'category_name.required' => 'Please input category name',
+            'category_name.unique' => 'Category is already existing',
+            'category_name.max' => 'Category name must be less than 255 characters'
         ]);
 
         Category::insert([
-            'cat_name' => $request->cat_name,
+            'category_name' => $request->category_name,
             'created_at' => Carbon::now()
         ]);
 
@@ -192,7 +192,12 @@ class AdminController extends Controller
         $order->delivery_status = "delivered";
         $order->payment_status = "paid";
 
+        $gameID = $order->game_id;
+        $orderQuantity = $order->quantity;
+        Game::where('id', $gameID)->decrement('quantity', $orderQuantity);
+
         $order->save();
+        // dd($gameID);
         return redirect()->back();
     }
 

@@ -71,8 +71,7 @@
                                             @csrf
                                             <div class="row">
                                                 <div class="col-md-4">
-                                                    <input type="number" name="quantity" value="1" min="1"
-                                                        style="width: 80px;">
+                                                    <input type="number" name="quantity" value="1" min="1" max="{{$game->quantity}}" style="width: 80px;">
                                                 </div>
                                                 <div class="col-md-4">
                                                     <input type="submit" value="Add to Cart">
