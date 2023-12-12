@@ -7,7 +7,7 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh; 
-    margin-left:4%;
+    margin-left:7%;
 } /* TEMP FIX, nakacenter siya IF yung monitor is 1920 x 1080. If hindi makahanap solution ok na ito basta nakafullscreen at wag lang i-zoom out */
 
 .card{
