@@ -104,7 +104,7 @@
                 @empty
                 
                 <tr>
-                    <td colspan="11">No Order Found</td>
+                    <td colspan="12">No Order Found</td>
                 </tr>
 
                 @endforelse

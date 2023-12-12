@@ -81,38 +81,42 @@
         }
 
         .order-section a:link {
-            background-color: #1bbda7d8;
+            background-color: rgba(51, 176, 226, 0.801);
             color: white;
             padding: 10px 15px;
             text-align: center;
             text-decoration: none;
+            font-weight: bold;
             display: inline-block;
         }
 
         .order-section a:visited {
-            background-color: #1bbda7d8;
+            background-color: rgba(51, 176, 226, 0.801);
             color: white;
             padding: 10px 15px;
             text-align: center;
             text-decoration: none;
+            font-weight: bold;
             display: inline-block;
         }
 
         .order-section a:hover {
-            background-color: #118864;
-            color: white;
+            background-color: rgb(57, 199, 255);
+            color: black;
             padding: 12px 17px;
             text-align: center;
             text-decoration: none;
+            font-weight: bold;
             display: inline-block;
         }
 
         .order-section a:active {
-            background-color: #118864;
-            color: white;
+            background-color: rgb(57, 199, 255);
+            color: black;
             padding: 10px 15px;
             text-align: center;
             text-decoration: underline;
+            font-weight: bold;
             display: inline-block;
         }
         .orderbox {

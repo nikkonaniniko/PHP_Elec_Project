@@ -22,7 +22,7 @@
 
                     <div>
                         {{-- <x-label for="name" value="{{ __('Name (Format: FN LN)') }}" /> --}}
-                        <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="{{ __('Name') }}"/>
+                        <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" placeholder="{{ __('Name (FN LN)') }}"/>
                     </div>
 
                     <div class="mt-4">
@@ -32,12 +32,12 @@
 
                     <div class="mt-4">
                         {{-- <x-label for="phone" value="{{ __('Contact Number (+63XXXXXXXXXX)') }}" /> --}}
-                        <x-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="phone" placeholder="{{ __('Phone') }}"/>
+                        <x-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="phone" placeholder="{{ __('Contact Number') }}"/>
                     </div>
 
                     <div class="mt-4">
                         {{-- <x-label for="address" value="{{ __('Full Address') }}" /> --}}
-                        <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autocomplete="address" placeholder="{{ __('Address') }}"/>
+                        <x-input id="address" class="block mt-1 w-full" type="text" name="address" :value="old('address')" required autocomplete="address" placeholder="{{ __('Full Address') }}"/>
                     </div>
 
                     <div class="mt-4">

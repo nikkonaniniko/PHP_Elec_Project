@@ -108,7 +108,7 @@ class AdminController extends Controller
 
     public function show_game()
     {
-        $games = Game::orderBy('created_at', 'DESC')->paginate('5');
+        $games = Game::orderBy('name', 'ASC')->paginate('5');
         return view('admin.show_game', compact('games'));
     }
 

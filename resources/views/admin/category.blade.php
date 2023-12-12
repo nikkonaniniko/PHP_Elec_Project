@@ -51,6 +51,15 @@
             </div>
             @endif
 
+            @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger">{{ $error }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                    @endforeach
+                @endif
+
            <div class="div_center">
             <h2>Add Category</h2>
             <form action="{{url('/add_category')}}" method="POST">
