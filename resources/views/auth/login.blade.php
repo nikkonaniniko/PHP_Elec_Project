@@ -11,11 +11,11 @@
             <x-authentication-card-logo />
         </x-slot>
 
-        @if (session('status'))
+        {{-- @if (session('status'))
             <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
                 {{ session('status') }}
             </div>
-        @endif
+        @endif --}}
 
         <form method="POST" action="{{ route('login') }}">
             @csrf
@@ -32,9 +32,10 @@
             <div class="mt-4">
                 <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" placeholder="{{ __('Password') }}" />
             </div>
-                    <x-validation-errors class="err_message" />{{-- TEMP FIX --}}
 
-            <div class="block mt-4 relative">
+                <x-validation-errors class="err_message" />{{-- TEMP FIX --}}
+
+            <div class="block mt-4">
                 <label for="remember_me" class="flex items-center">
                     <x-checkbox id="remember_me" name="remember" />
                     <span id="remember_me"class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
@@ -48,6 +49,12 @@
                     </a>
                 @endif
             </div>
+            <br><br>
+            @if (session('status'))
+                <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
+                    {{ session('status') }}
+                </div>
+                @endif
             
             <x-button id="btn" class="ml-4">
                 {{ __('Log in') }}
